@@ -62,6 +62,27 @@ public class SingleLinkedList<T> {
         current.next(node);
     }
 
+    public void deleteById(int id){
+        if(this.head == null) return;
+        Node<T> prev = null;
+        Node<T> current = this.head;
+        if( id == 0 ){
+            this.head = this.head.getNext();
+            return;
+        }
+        int index = 1;
+        while(current != null){
+            if(id == index){
+                prev.next(current.getNext());
+                current = null;
+                return;
+            }
+            prev = current;
+            current = current.getNext();
+            index++;
+        }
+    }
+
     public void display(){
         Node<T> current = this.head;
         while(current != null){
